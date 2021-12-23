@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace BlogMvcApp.Src.Services
 {
-    interface ITagService
+    public interface ITagService
     {
     }
 }
