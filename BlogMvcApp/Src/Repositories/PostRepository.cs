@@ -1,4 +1,5 @@
 ﻿using BlogMvcApp.Src.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,29 +9,39 @@ namespace BlogMvcApp.Src.Repositories
 {
     public class PostRepository : IPostRepository
     {
+        private readonly BlogDbContext _db;
+        public PostRepository(BlogDbContext db)
+        {
+            _db = db;
+        }
         public void Add(Post entity)
         {
-            throw new NotImplementedException();
+            _db.Posts.Add(entity);
+            _db.SaveChanges();
         }
 
         public void Delete(string Id)
         {
-            throw new NotImplementedException();
+            var comment = _db.Posts.Find(Id);
+            _db.Posts.Remove(comment);
+            _db.SaveChanges();
         }
 
         public Post Find(string Id)
         {
-            throw new NotImplementedException();
+            var comment = _db.Posts.Include(x=>x.Comments).Include(x=>x.Category).FirstOrDefault(x=>x.Id==Id);
+            return comment;
         }
 
         public List<Post> List()
         {
-            throw new NotImplementedException();
+            return _db.Posts.Include(x => x.Comments).Include(x => x.Category).ToList();
         }
 
         public void Update(Post entity)
         {
-            throw new NotImplementedException();
+            _db.Posts.Update(entity);
+            _db.SaveChanges();
         }
     }
 }
