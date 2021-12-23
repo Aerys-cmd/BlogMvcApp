@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BlogMvcApp.Src.Repositories
 {
-    interface ICategoryRepository:IRepository<Category>
+   public interface ICategoryRepository:IRepository<Category>
     {
     }
 }

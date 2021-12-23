@@ -38,5 +38,15 @@ namespace BlogMvcApp.Src.Services
 
         }
 
+        public List<Comment> GetComment()
+        {
+            return _commentRepository.List();
+        }
+
+        public Comment GetCommentById(string id)
+        {
+            var comment = _commentRepository.Find(id);
+            return comment;
+        }
     }
 }
