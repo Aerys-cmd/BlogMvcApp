@@ -47,5 +47,9 @@ namespace BlogMvcApp.Src.Services
         return a;
     }
 
+    public void GetAllTags(Tag tag)
+        {
+            _tagRepository.List();
+        }
     }
 }
