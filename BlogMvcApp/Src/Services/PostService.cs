@@ -37,12 +37,18 @@ namespace BlogMvcApp.Src.Services
             //TODO: TagPostService'e bağlanarak gönderilen tagId ye sahip tüm postların PostId'leri döndürülecek. Burada bir algoritma kurularak gelen postIdlere sahip postlar
             //return edilecek.
             throw new NotImplementedException();
+            
         }
 
-        public void AddPost(Post post,string Tags)
+        public void AddPost(Post post,string tagString)
         {
             _postRepository.Add(post);
             //TODO : tagler ayrılarak tek tek PostTagService içerisindeki AddTagToPost methoduna yönlendirilecek.Eğer tag veritabanında mevcut değil ise oluşturulacak ve veritabanına eklenecek. 
+            var tags = tagString.Trim(',').Split(',').ToList();
+            foreach (var tag in tags)
+            {
+                //Create tag if not exist
+            }
 
         }
     }
