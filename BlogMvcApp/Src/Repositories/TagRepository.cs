@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BlogMvcApp.Src.Repositories
 {
-    public class TagRepository
+    public class TagRepository:ITagRepository
     {
         private readonly BlogDbContext _db;
         public TagRepository(BlogDbContext db)

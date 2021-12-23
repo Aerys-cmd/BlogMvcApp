@@ -10,10 +10,12 @@ namespace BlogMvcApp.Src.Services
     public class PostService:IPostService
     {
         private readonly IPostRepository _postRepository;
+        private readonly IPostTagService _postTagService;
 
-        public PostService(IPostRepository postRepository)
+        public PostService(IPostRepository postRepository, IPostTagService postTagService)
         {
             _postRepository = postRepository;
+            _postTagService = postTagService;
         }
       
         public List<Post> GetPosts()
@@ -47,8 +49,9 @@ namespace BlogMvcApp.Src.Services
             var tags = tagString.Trim(',').Split(',').ToList();
             foreach (var tag in tags)
             {
-                //Create tag if not exist
+                _postTagService.AddTagToPost(post.Id, tag);
             }
+
 
         }
     }
