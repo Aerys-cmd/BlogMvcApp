@@ -19,6 +19,7 @@ namespace BlogMvcApp.Controllers
         private readonly ICommentService _commentService;
         private readonly IPostService _postService;
 
+
         public HomeController(ILogger<HomeController> logger, ICommentRepository commentRepository,ICommentService commentService, IPostService postService)
         {
             _logger = logger;
@@ -29,17 +30,19 @@ namespace BlogMvcApp.Controllers
 
         public IActionResult Index()
         {
-            //var post = new Post
-            //{
-            //    CategoryId = "cf948950-e54f-4615-a893-d12a6803e945",
-            //    AuthorName = "Recep",
-            //    Content="Bu sitedeki 2. yayın",
-            //    PublishDate=DateTime.Now,
-            //    Title="2. Deneme Yayını"
-            //};
-            //_postService.AddPost(post, ",C#,DotNetCore,Nbuy");
-          
-            return View();
+            var model = new List<BlogsViewModel>();
+
+            var posts = _postService.GetPosts();
+
+            foreach (var post in posts)
+            {
+                model.Add(new BlogsViewModel
+                {
+                    Post = post,
+                    Tags = _postService.GetTagsByPostId(post.Id)
+                });
+            }
+            return View(model);
         }
 
         public IActionResult Privacy()

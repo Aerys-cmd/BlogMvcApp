@@ -39,6 +39,7 @@ namespace BlogMvcApp.Src.Services
         /// </returns>
         List<Post> GetPostsByTagId(string tagId);
         List<Post> GetRecentPosts();
+        List<Tag> GetTagsByPostId(string postId);
 
 
         void AddPost(Post post, string Tags);

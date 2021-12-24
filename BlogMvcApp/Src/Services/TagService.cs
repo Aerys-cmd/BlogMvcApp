@@ -51,5 +51,10 @@ namespace BlogMvcApp.Src.Services
         {
            return _tagRepository.List();
         }
+
+        public Tag GetTagById(string Id)
+        {
+            return _tagRepository.Where(x => x.Id == Id).FirstOrDefault();
+        }
     }
 }
