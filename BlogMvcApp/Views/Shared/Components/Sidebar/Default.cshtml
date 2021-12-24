@@ -40,7 +40,7 @@
                         @foreach(var category in Model.Categories)
                         {
                             <li>
-                                <a href="CategoryDetails?categoryId=@category.Id">@category.Name</a>
+                                <a href="?filter=@category.Id&Type=Category">@category.Name</a>
                             </li>
                         }
                     </ul>
