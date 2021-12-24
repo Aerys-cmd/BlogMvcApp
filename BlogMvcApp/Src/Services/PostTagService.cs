@@ -9,11 +9,11 @@ namespace BlogMvcApp.Src.Services
 {
     public class PostTagService:IPostTagService
     {
-        private readonly PostTagRepository _postTagRepository;
-        private readonly TagService _tagService;
+        private readonly IPostTagRepository _postTagRepository;
+        private readonly ITagService _tagService;
         
 
-        public PostTagService(PostTagRepository postTagRepository, TagService tagService)
+        public PostTagService(IPostTagRepository postTagRepository, ITagService tagService)
         {
             _postTagRepository = postTagRepository;
             _tagService = tagService;
