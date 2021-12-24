@@ -1,4 +1,5 @@
-﻿using BlogMvcApp.Src.Services;
+﻿using BlogMvcApp.Models;
+using BlogMvcApp.Src.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -22,7 +23,13 @@ namespace BlogMvcApp.ViewComponents
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-
+            var tags = _tagservice.GetAllTags();
+            var posts = _postService.GetRecentPosts();
+            var categories = _categoryService.GetAllCategories();
+            var model = new SidebarModel();
+            model.Categories = categories;
+            model.Tags = tags;
+            model.RecentPosts = posts;
             return View(await Task.FromResult(model));
         }
     }

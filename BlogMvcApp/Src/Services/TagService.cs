@@ -41,15 +41,15 @@ namespace BlogMvcApp.Src.Services
             }
         }
 
-    private string GetTagIdByName(string name)
-    {
-        var a = _tagRepository.List().Where(x => x.Name == name).Select(x => x.Id).FirstOrDefault();
-        return a;
-    }
-
-    public void GetAllTags(Tag tag)
+        private string GetTagIdByName(string name)
         {
-            _tagRepository.List();
+            var a = _tagRepository.List().Where(x => x.Name == name).Select(x => x.Id).FirstOrDefault();
+            return a;
+        }
+
+        public List<Tag> GetAllTags()
+        {
+           return _tagRepository.List();
         }
     }
 }

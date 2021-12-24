@@ -12,6 +12,6 @@ namespace BlogMvcApp.Src.Services
 
         public string IfNotExistAddAndReturnTagId(string name);
 
-        public void GetAllTags(Tag tag);
+        public List<Tag> GetAllTags();
     }
 }

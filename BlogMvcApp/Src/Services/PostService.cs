@@ -54,5 +54,11 @@ namespace BlogMvcApp.Src.Services
 
 
         }
+
+        public List<Post> GetRecentPosts()
+        {
+            var recentPosts = _postRepository.List().OrderByDescending(x=>x.PublishDate).Take(3).ToList();
+            return recentPosts;
+        }
     }
 }

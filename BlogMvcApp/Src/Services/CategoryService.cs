@@ -32,7 +32,7 @@ namespace BlogMvcApp.Src.Services
             return category;
         }
 
-        List<Category> ICategoryService.GetAllCategory()
+        List<Category> ICategoryService.GetAllCategories()
         {
             return _categoryRepository.List();
         }

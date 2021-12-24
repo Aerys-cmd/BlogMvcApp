@@ -19,6 +19,6 @@ namespace BlogMvcApp.Src.Services
         /// veritabanında kayıtlı olan bütün categoryleri getirir.
         /// </summary>
         /// <returns></returns>
-        List<Category> GetAllCategory();
+        List<Category> GetAllCategories();
     }
 }
