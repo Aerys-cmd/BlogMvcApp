@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace BlogMvcApp.Src.Repositories
@@ -41,6 +42,11 @@ namespace BlogMvcApp.Src.Repositories
         {
             _db.Comments.Update(entity);
             _db.SaveChanges();
+        }
+
+        public IQueryable<Comment> Where(Expression<Func<Comment, bool>> expression)
+        {
+            return _db.Comments.Where(expression);
         }
     }
 }
