@@ -20,19 +20,46 @@ namespace BlogMvcApp.Controllers
         private readonly IPostService _postService;
 
 
-        public HomeController(ILogger<HomeController> logger, ICommentRepository commentRepository,ICommentService commentService, IPostService postService)
+        public HomeController(ILogger<HomeController> logger, ICommentRepository commentRepository, ICommentService commentService, IPostService postService)
         {
             _logger = logger;
-            _commentRepository=commentRepository;
+            _commentRepository = commentRepository;
             _commentService = commentService;
             _postService = postService;
         }
 
-        public IActionResult Index()
+
+        public IActionResult Index(string filter, string Type)
         {
             var model = new List<BlogsViewModel>();
-
-            var posts = _postService.GetPosts();
+            List<Post> posts = new List<Post>();
+            if (String.IsNullOrEmpty(filter)&&String.IsNullOrEmpty(Type))
+            { 
+                 posts = _postService.GetPosts();
+            }
+            else if(String.IsNullOrEmpty(Type))
+            {
+                RedirectToPage("Error");
+            }
+            else
+            {
+                if (Type=="Tag")
+                {
+                    posts = _postService.GetPostsByTagId(filter);
+                }
+                else if (Type=="Search")
+                {
+                    posts = _postService.GetPosts().Where(x => x.Title.Contains(filter) || x.Content.Contains(filter)).ToList();
+                }
+                else if (Type=="Category")
+                {
+                    posts = _postService.GetPosts().Where(x => x.CategoryId == filter).ToList();
+                }
+                else
+                {
+                    RedirectToPage("Error");
+                }
+            }
 
             foreach (var post in posts)
             {
@@ -42,7 +69,9 @@ namespace BlogMvcApp.Controllers
                     Tags = _postService.GetTagsByPostId(post.Id)
                 });
             }
+
             return View(model);
+
         }
 
         public IActionResult Privacy()
