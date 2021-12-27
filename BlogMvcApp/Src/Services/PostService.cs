@@ -12,12 +12,15 @@ namespace BlogMvcApp.Src.Services
         private readonly IPostRepository _postRepository;
         private readonly IPostTagService _postTagService;
         private readonly ITagService _tagService;
+        
+
 
         public PostService(IPostRepository postRepository, IPostTagService postTagService, ITagService tagService)
         {
             _postRepository = postRepository;
             _postTagService = postTagService;
             _tagService = tagService;
+            
         }
 
         public List<Post> GetPosts()
@@ -40,7 +43,8 @@ namespace BlogMvcApp.Src.Services
         {
             //TODO: TagPostService'e bağlanarak gönderilen tagId ye sahip tüm postların PostId'leri döndürülecek. Burada bir algoritma kurularak gelen postIdlere sahip postlar
             //return edilecek.
-            throw new NotImplementedException();
+            var posts = _postRepository.List().Where(x => x.TagId == tagId).ToList();
+            return posts;
 
         }
 

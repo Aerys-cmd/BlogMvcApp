@@ -38,6 +38,7 @@ namespace BlogMvcApp.Src.Services
         /// Verilen tagId 'ye sahip olan bütün Postları döndürür.
         /// </returns>
         List<Post> GetPostsByTagId(string tagId);
+        
         List<Post> GetRecentPosts();
         List<Tag> GetTagsByPostId(string postId);
 

@@ -16,6 +16,11 @@ namespace BlogMvcApp.Src.Entities
         public Category Category { get; set; }
         public List<Comment> Comments { get; set; }
 
+        public Tag Tag { get; set; }
+
+        public string TagId { get; set; }
+
+
 
     }
 }

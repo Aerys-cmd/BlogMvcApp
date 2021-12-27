@@ -28,15 +28,15 @@
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item active">
-                <a class="nav-link" href="index.html">Home
+                <a class="nav-link" href="/Home/Index">Home
                   <span class="sr-only">(current)</span>
                 </a>
               </li> 
               <li class="nav-item">
-                <a class="nav-link" href="post-details.html">Post Details</a>
+                <a class="nav-link" href="/Home/PostDetails">Post Details</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="ContactUs.cshtml">Contact Us</a>
+                <a class="nav-link" href="/Home/ContactUs">Contact Us</a>
               </li>
             </ul>
           </div>
@@ -46,12 +46,12 @@
      <section>
       <div class="container">
           <div class="row">
-          <div class="col-md-9">
+          @*<div class="col-md-9">*@
                @RenderBody()
-          </div>
-          <div class="col-md-3">
+          @*</div>*@
+          @*<div class="col-md-3">
               @await Component.InvokeAsync("Sidebar")
-          </div>
+          </div>*@
          </div>
       </div>
     </section>
